@@ -44,8 +44,7 @@ const GpioPin gpio_ext_pc3 = {.port = GPIOC, .pin = LL_GPIO_PIN_3};
 const GpioPin gpio_ext_pb2 = {.port = GPIOB, .pin = LL_GPIO_PIN_2};
 const GpioPin gpio_ext_pb3 = {.port = GPIOB, .pin = LL_GPIO_PIN_3};
 const GpioPin gpio_ext_pa4 = {.port = GPIOA, .pin = LL_GPIO_PIN_4};
-const GpioPin gpio_ext_pa6 = {.port = GPIOA, .pin = LL_GPIO_PIN_6};
-const GpioPin gpio_ext_pa7 = {.port = GPIOA, .pin = LL_GPIO_PIN_7};
+const GpioPin gpio_usart_tx = { .port = GPIOB, .pin = LL_GPIO_PIN_6 };
 
 const GpioPin gpio_nfc_irq_rfid_pull = {.port = RFID_PULL_GPIO_Port, .pin = RFID_PULL_Pin};
 const GpioPin gpio_rfid_carrier_out = {.port = RFID_OUT_GPIO_Port, .pin = RFID_OUT_Pin};
@@ -55,8 +54,8 @@ const GpioPin gpio_rfid_carrier = {.port = RFID_CARRIER_GPIO_Port, .pin = RFID_C
 const GpioPin gpio_infrared_rx = {.port = IR_RX_GPIO_Port, .pin = IR_RX_Pin};
 const GpioPin gpio_infrared_tx = {.port = IR_TX_GPIO_Port, .pin = IR_TX_Pin};
 
-const GpioPin gpio_usart_tx = {.port = USART1_TX_Port, .pin = USART1_TX_Pin};
-const GpioPin gpio_usart_rx = {.port = USART1_RX_Port, .pin = USART1_RX_Pin};
+const GpioPin gpio_usart_tx = { .port = GPIOB, .pin = LL_GPIO_PIN_6 };
+const GpioPin gpio_usart_rx = { .port = GPIOB, .pin = LL_GPIO_PIN_7 };
 
 const GpioPin gpio_i2c_power_sda = {.port = GPIOA, .pin = LL_GPIO_PIN_10};
 const GpioPin gpio_i2c_power_scl = {.port = GPIOA, .pin = LL_GPIO_PIN_9};
@@ -67,15 +66,15 @@ const GpioPin gpio_periph_power = {.port = GPIOA, .pin = LL_GPIO_PIN_3};
 
 const GpioPin gpio_usb_dm = {.port = GPIOA, .pin = LL_GPIO_PIN_11};
 const GpioPin gpio_usb_dp = {.port = GPIOA, .pin = LL_GPIO_PIN_12};
-
+const GpioPin gpio_battery_vbus = { .port = GPIOA, .pin = LL_GPIO_PIN_2 };
 const GpioPinRecord gpio_pins[] = {
     // 5V: 1
-    {.pin = &gpio_ext_pa7,
-     .name = "PA7",
-     .channel = FuriHalAdcChannel12,
-     .pwm_output = FuriHalPwmOutputIdTim1PA7,
+    {.pin = &gpio_battery_vbus,
+     .name = "VBUS"
+     .channel = FuriHalAdcChannel2,
      .number = 2,
      .debug = false},
+
     {.pin = &gpio_ext_pa6,
      .name = "PA6",
      .channel = FuriHalAdcChannel11,
@@ -117,12 +116,12 @@ const GpioPinRecord gpio_pins[] = {
      .number = 12,
      .debug = true},
     {.pin = &gpio_usart_tx,
-     .name = "PB6",
+     .name = "B6",
      .channel = FuriHalAdcChannelNone,
      .number = 13,
      .debug = true},
     {.pin = &gpio_usart_rx,
-     .name = "PB7",
+     .name = "B7",
      .channel = FuriHalAdcChannelNone,
      .number = 14,
      .debug = true},
