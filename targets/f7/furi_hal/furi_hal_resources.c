@@ -72,9 +72,9 @@ const GpioPinRecord gpio_pins[] = {
     {.pin = &gpio_battery_vbus,
      .name = "VBUS"
      .channel = FuriHalAdcChannel2,
-     
      .number = 2,
      .debug = false},
+
     {.pin = &gpio_ext_pa6,
      .name = "PA6",
      .channel = FuriHalAdcChannel11,
@@ -305,4 +305,3 @@ const GpioPinRecord* furi_hal_resources_pin_by_number(uint8_t number) {
     }
     return NULL;
 }
-
